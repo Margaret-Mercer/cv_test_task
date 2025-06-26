@@ -16,20 +16,20 @@ def load_video(video_path):
 
 def load_model(weights_path, cfg_path):
     """
-    Загрузить веса модели.
+    Загружает веса модели.
 
-    :param weights_path: Путь к файлу весов модели.
-    :param cfg_path: Путь к файлу конфигурации модели.
-    :return: Объект модели.
+    :param weights_path: путь к файлу весов модели.
+    :param cfg_path: путь к файлу конфигурации модели.
+    :return: объект модели.
     """
     return cv2.dnn.readNet(weights_path, cfg_path)
 
 def load_classes(class_path):
     """
-    Загрузить список классов объектов.
+    Загружает список классов объектов.
 
-    :param class_path: Путь к файлу списка классов.
-    :return: Список классов.
+    :param class_path: путь к файлу списка классов.
+    :return: список классов.
     """
     with open(class_path, "r") as f:
         return [line.strip() for line in f.readlines()]
@@ -97,7 +97,7 @@ def main():
     weights_path = 'yolov3.weights'
     cfg_path = 'yolov3.cfg'
     class_path = 'coco.names'
-    output_path = 'outputv2.mp4'
+    output_path = 'output.mp4'
 
     video = load_video(video_path)
     net = load_model(weights_path, cfg_path)
