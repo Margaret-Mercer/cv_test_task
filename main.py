@@ -36,25 +36,25 @@ def load_classes(class_path):
 
 def create_writer(fps, width, height, output_path):
     """
-    Создать видео-писатель.
+    Создает видео-писатель.
 
-    :param fps: Частота кадров.
-    :param width: Ширина кадра.
-    :param height: Высота кадра.
-    :param output_path: Путь к файлу вывода.
-    :return: Объект видео-писателя.
+    :param fps: частота кадров.
+    :param width: ширина кадра.
+    :param height: высота кадра.
+    :param output_path: путь к файлу вывода.
+    :return: объект видео-писателя.
     """
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     return cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
 def detect_objects(frame, net, classes):
     """
-    Детектировать объекты на кадре видео.
+    Детектирует объекты на кадре видео.
 
-    :param frame: Кадр видео.
-    :param net: Объект модели.
-    :param classes: Список классов.
-    :return: Список детектированных объектов.
+    :param frame: кадр видео.
+    :param net: объект модели.
+    :param classes: список классов.
+    :return: список детектированных объектов.
     """
     blob = cv2.dnn.blobFromImage(frame, 1/255, (416, 416), swapRB=True, crop=False)
     net.setInput(blob)
@@ -75,10 +75,10 @@ def detect_objects(frame, net, classes):
 
 def draw_objects(frame, detected_objects):
     """
-    Отрисовать детектированные объекты на кадре видео.
+    Отрисовывает детектированные объекты на кадре видео.
 
-    :param frame: Кадр видео.
-    :param detected_objects: Список детектированных объектов.
+    :param frame: кадр видео.
+    :param detected_objects: список детектированных объектов.
     """
     for x, y, w, h, label, confidence in detected_objects:
         for obj_x, obj_y, obj_w, obj_h, obj_label, obj_confidence in detected_objects:
